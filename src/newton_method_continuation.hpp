@@ -85,6 +85,7 @@ public:
             return false;
 
         F_z *= -1;
+        adept::Matrix DF_z_k = jacobian(adept::range(0, N - 1), adept::range(0, N - 1));
         VectorN<N> delta_z = solve(jacobian, F_z);
         this->current_z += delta_z;
 
