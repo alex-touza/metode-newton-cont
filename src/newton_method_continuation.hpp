@@ -22,14 +22,6 @@ private:
     VectorN<N> current_z;
     double h_;
 
-
-public:
-    explicit newton_method_continuation(
-            std::function<void(const aVectorN<N>& x, const adept::adouble& p, aVectorN<N>& y)>&& function, double h) :
-        function_(std::move(function)), h_(h) {}
-
-    const solution& last_solution() { return solutions_.back(); }
-
     void calculate_jacobian(const VectorN<N>& x_val, double p_val, VectorN<N>& y_val, adept::Matrix& jacobian) {
         adept::Stack stack;
         aVectorN<N> x = x_val;
@@ -48,6 +40,12 @@ public:
         y_val = value(y);
     }
 
+public:
+    explicit newton_method_continuation(
+            std::function<void(const aVectorN<N>& x, const adept::adouble& p, aVectorN<N>& y)>&& function, double h) :
+        function_(std::move(function)), h_(h) {}
+
+    const solution& last_solution() { return solutions_.back(); }
 
     /**
      *
