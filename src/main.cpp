@@ -1,10 +1,8 @@
-#include <cassert>
 #include <functional>
 #include <iomanip>
 #include <iostream>
-#include <utility>
 
-#include "../newton_method_continuation.hpp"
+#include "newton_method_continuation.hpp"
 
 
 int main() {

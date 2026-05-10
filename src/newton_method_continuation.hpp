@@ -3,7 +3,11 @@
 
 #include <adept.h>
 #include <adept_arrays.h>
-#include "../types.h"
+#include <cassert>
+#include <functional>
+#include <utility>
+
+#include "types.h"
 
 template<int N>
 class newton_method_continuation {
