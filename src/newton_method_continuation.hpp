@@ -52,8 +52,9 @@ public:
     const solution& last_solution() { return solutions_.back(); }
 
     /**
+     * @brief Calcula una aproximació per a un nou valor de p amb el salt h especificat.
      *
-     * @return Una matriu columna de mida N amb
+     * @pre !solutions_.empty()
      */
     void continuation() {
         const VectorN<N>& x_k = this->last_solution().x;
@@ -74,6 +75,13 @@ public:
         this->current_p = p_k + this->h_;
     }
 
+    /**
+     * @brief Afina l'aproximació per al valor de p actual amb el mètode de Newton.
+     * @returns @code false@endcode si s'ha arribat a la precisió especificada per epsilon, @code true@endcode
+     * altrament.
+     *
+     * @pre current_p, current_z contenen els valors correctes de l'aproximació actual
+     */
     bool step() {
         // Resolem el sistema DF(z_(k-1)) Delta z = - F(z_(k-1))
 
@@ -92,20 +100,36 @@ public:
         return true;
     }
 
+    /**
+     * @brief Afegeix una solució a la llista de solucions.
+     */
     void add_solution(solution&& solution) { solutions_.emplace_back(std::move(solution)); }
 
+    /**
+     * @brief Afegeix una solució a la llista de solucions.
+     */
     void add_solution(const solution& solution) { solutions_.push_back(solution); }
 
+    /**
+     * @brief Calcula una solució del sistema prenent com a partida la solució inicial especificada.
+     */
     void calculate(solution&& solution) {
         this->add_solution(solution);
         this->calculate();
     }
 
+    /**
+     * @brief Calcula una solució del sistema prenent com a partida la solució inicial especificada.
+     */
     void calculate(const solution& solution) {
         this->add_solution(solution);
         this->calculate();
     }
 
+    /**
+     * @brief Calcula una solució del sistema prenent com a partida la solució anterior trobada.
+     * @pre !solutions_.empty()
+     */
     void calculate() {
         assert(!solutions_.empty());
 
