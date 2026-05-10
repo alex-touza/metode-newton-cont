@@ -33,8 +33,7 @@ cmake ..
 make
 ```
 
-O bé, si disposeu d'un entorn de desenvolupament integrat raonable, podeu obrir-hi el projecte i compilar-lo amb un sol
-clic.
+O bé, si disposeu d'un entorn de desenvolupament integrat raonable, podeu obrir-hi el projecte i compilar-lo ràpidament.
 
 ## Mètode
 
