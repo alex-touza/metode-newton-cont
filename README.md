@@ -50,8 +50,8 @@ vulgui trobar:
   $z^{(0)} := x(p_0) + h \dfrac{\mathrm{d}x}{\mathrm{d}p}(p_0)$ obtinguda a partir de la derivació de la funció
   implícita.
 - **Aproximació (mètode de Newton).** Anem afinant les aproximacions resolent, al pas $k$-èsim, el
-  sistema $Df\!\left(z^{(k-1)},\, p_i\right)\!\left(z - z^{(k-1)}\right) = - f\!\left(z^{(k-1)},\, p_i\right)$,
-  on $Df\!\left(z^{(k-1)},\, p_i\right)$ és el diferencial de $f$ respecte $z^{(k-1)}$, fins que el residu
+  sistema $Df\left(z^{(k-1)},\, p_i\right)\left(z - z^{(k-1)}\right) = - f\left(z^{(k-1)},\, p_i\right)$,
+  on $Df\left(z^{(k-1)},\, p_i\right)$ és el diferencial de $f$ respecte $z^{(k-1)}$, fins que el residu
   compleix $\left\lVert f(z^{(k-1)}, p_i) \right\rVert < \varepsilon$.
 
 ## Implementació
